@@ -89,3 +89,4 @@ Thumbs.db
 *.obj
 *.xlsx
 *.png
+/bin/
