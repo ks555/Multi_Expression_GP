@@ -24,14 +24,14 @@ public class Main {
 //	public static String resultsFolderName="results_Jan_2017";
 	public static String resultsFolderName="results";
 	public static final boolean SHUFFLE_AND_SPLIT = false;
-	public static final boolean INITIALIZE_POP = false;
+	public static final boolean INITIALIZE_POP = true;
 
 //	//data in one file, random split for each run (bioav.txt etc.)
 //	public static final String DATA_FILENAME = "bioav";
 //	public static final boolean SHUFFLE_AND_SPLIT = true;
 	
-	public static final int NUMBER_OF_RUNS = 30;
-	public static final int NUMBER_OF_GENERATIONS = 200;
+	public static final int NUMBER_OF_RUNS = 3;
+	public static final int NUMBER_OF_GENERATIONS = 100;
 	public static int CURRENTRUN;	
 
 	
@@ -72,25 +72,25 @@ public class Main {
 			System.out.println("current run: "+CURRENTRUN);
 			//GpRun gp = new GpRun(data);			
 			//GsgpRun gp = new GsgpRun(data);
-			EsgsgpRun gp = new EsgsgpRun(data);
-			//EsgpRun gp = new EsgpRun(data);			
+			//EsgsgpRun gp = new EsgsgpRun(data);
+			EsgpRun gp = new EsgpRun(data);			
 			//CHANGE OUTPUT FOLDER NAME ABOVE!!!!!
 			
 			//if regular, update results per run
 			if(INITIALIZE_POP){
-//				gp.evolve(50);
-//				Population evolvedPop=gp.getReconPop();
-//				//create new gsgp instance - with pop as parameter, need overloaded constructor
-//				GsgpRun newgp = new GsgpRun(data,evolvedPop);
-//				newgp.evolve(NUMBER_OF_GENERATIONS-50);
-//				resultsPerRun[0][i] = newgp.getBestTrainingError();
-//				resultsPerRun[1][i] = newgp.getBestUnseenError();
-//				resultsPerRun[2][i] = newgp.getBestSize();
-//				resultsPerRun[3][i] = newgp.getBestDepth();
-//				System.out.println("\nBest");
-//				gp.printBest();
-//				System.out.println();			
-//				System.out.println();
+				gp.evolve(50);
+				Population evolvedPop=gp.getReconPop();
+				//create new gsgp instance - with pop as parameter, need overloaded constructor
+				GsgpRun newgp = new GsgpRun(data,evolvedPop,50);
+				newgp.evolve(NUMBER_OF_GENERATIONS-50);
+				resultsPerRun[0][i] = newgp.getBestTrainingError();
+				resultsPerRun[1][i] = newgp.getBestUnseenError();
+				resultsPerRun[2][i] = newgp.getBestSize();
+				resultsPerRun[3][i] = newgp.getBestDepth();
+				System.out.println("\nBest");
+				gp.printBest();
+				System.out.println();			
+				System.out.println();
 			}
 			else{				
 				gp.evolve(NUMBER_OF_GENERATIONS);

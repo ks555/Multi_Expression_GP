@@ -45,9 +45,9 @@ public class GpRun implements Serializable {
 		initialize();
 	}
 	
-	public GpRun(Data data,Population reconPop) throws IOException {
+	public GpRun(Data data,Population reconPop,int gen) throws IOException {
 		this.data = data;
-		initialize(reconPop);
+		initialize(reconPop,gen);
 	}
 
 	protected void initialize() throws IOException {
@@ -115,7 +115,7 @@ public class GpRun implements Serializable {
 		currentGeneration++;
 	}
 
-	protected void initialize(Population reconPop) throws IOException {
+	protected void initialize(Population reconPop,int gen) throws IOException {
 
 		// adds all the functions to the function set
 		functionSet = new ArrayList<ProgramElement>();
@@ -152,7 +152,7 @@ public class GpRun implements Serializable {
 		printAtEachGeneration = true;
 
 		randomGenerator = new Random();
-		currentGeneration = 0;
+		currentGeneration = gen;
 
 		// initialize and evaluate population
 		population=reconPop;
@@ -179,7 +179,7 @@ public class GpRun implements Serializable {
 			}
 		}
 		
-		currentGeneration=4;
+		currentGeneration++;
 		
 	}
 	

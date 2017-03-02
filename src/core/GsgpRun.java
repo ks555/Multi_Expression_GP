@@ -20,13 +20,13 @@ public class GsgpRun extends GpRun {
 	public GsgpRun(Data data) throws IOException {
 		super(data);
 	}
-	public GsgpRun(Data data,Population evolvedPop) throws IOException {
-		super(data,evolvedPop);
+	public GsgpRun(Data data,Population evolvedPop, int gen) throws IOException {
+		super(data,evolvedPop,gen);
 	}
 	
-	protected void initialize(Population evolvedPop) throws IOException {
+	protected void initialize(Population evolvedPop, int gen) throws IOException {
 		if(Main.INITIALIZE_POP){
-			super.initialize(evolvedPop);
+			super.initialize(evolvedPop,gen);
 		}
 		else{
 			super.initialize();
@@ -36,7 +36,7 @@ public class GsgpRun extends GpRun {
 		//boundedMutation = false;
 		boundedMutation = true;
 		//buildIndividuals = true;
-		buildIndividuals = true;
+		buildIndividuals = false;
 	}
 
 	protected Individual applyStandardCrossover(Individual p1, Individual p2) {
